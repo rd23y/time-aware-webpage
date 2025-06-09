@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<!-- This declares the document type and ensures proper HTML5 behavior -->
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <!-- Sets the character encoding so that special characters render correctly -->
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Ensures the site is responsive on mobile devices -->
+
+  <title>Time-Aware Image Webpage</title>
+  <!-- Title shown in browser tab -->
+
+  <style>
+    /* Basic styling for layout and responsiveness */
+    body 
+    {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 50px;
+      background-color: #f0f8ff;
+    }
+
+    img {
+      margin-top: 20px;
+      max-width: 90%;
+      height: auto;
+      border: 2px solid #ccc;
+      border-radius: 10px;
+    }
+
+    #greeting {
+      font-size: 24px;
+      margin-top: 20px;
+      color: #333;
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Static personal information as required -->
+  <h1>Rishitavani Donapati</h1>
+  <p>Course: Web Applications Programming (COP 4813)</p>
+  <p>Major: Computer Science</p>
+  <p>Hello! Welcome to my time-aware webpage that updates based on the current time of day.</p>
+
+  <!-- Placeholder for dynamic greeting based on time -->
+  <h2 id="greeting">Loading greeting...</h2>
+
+  <!-- Image element whose source will change based on time -->
+  <img id="timeImage" src="" alt="Time Based Image" width="500" />
+
+  <!-- JavaScript section: handles time-based logic -->
+  <script>
+    // Wait for the page to finish loading before running the script
+    window.onload = function () {
+      // Get references to the image and greeting elements
+      const img = document.getElementById("timeImage");
+      const greeting = document.getElementById("greeting");
+
+      // Get the current hour (0–23) from the user's local time
+      const hour = new Date().getHours();
+
+      // Determine time of day and set image/greeting accordingly
+      if (hour >= 6 && hour < 12) {
+        // Morning: 6:00 AM – 11:59 AM
+        img.src = "https://images.unsplash.com/photo-1502082553048-f009c37129b9?auto=format&fit=crop&w=1200&q=80";
+        img.alt = "Sunrise over a calm morning lake";
+        greeting.textContent = "Good Morning!";
+      } else if (hour >= 12 && hour < 18) {
+        // Afternoon: 12:00 PM – 5:59 PM
+        img.src = "https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=1200&q=80";
+        img.alt = "Sunny afternoon park";
+        greeting.textContent = "Good Afternoon!";
+      } else {
+        // Evening/Night: 6:00 PM – 5:59 AM
+        img.src = "https://images.unsplash.com/photo-1508264165352-258a6b0e2b56?auto=format&fit=crop&w=1200&q=80";
+        img.alt = "City lights at night with a full moon";
+        greeting.textContent = "Good Evening!";
+      }
+
+      // This logic ensures the correct image is displayed based on the user's current local time
+    };
+  </script>
+</body>
+
+</html>
